@@ -1,0 +1,58 @@
+{
+    "name": "flarum-com/truncating-approval",
+    "description": "Require approval for certain formatting tags",
+    "keywords": [
+        "flarum"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8.0"
+    },
+    "authors": [
+        {
+            "name": "Flarum Commercial Team",
+            "email": "development@flarum.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "FlarumCom\\TruncatingApproval\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Truncating Approval",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-dumpster-fire",
+                "color": "#3a98d0",
+                "backgroundColor": "#ebf1fd"
+            },
+            "optional-dependencies": [
+                "flarum/lock"
+            ]
+        },
+        "flarum-cli": {
+            "modules": {
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "jsCommon": true,
+                "css": true,
+                "locale": true,
+                "gitConf": true,
+                "githubActions": true,
+                "prettier": true,
+                "typescript": true,
+                "bundlewatch": false,
+                "backendTesting": false,
+                "editorConfig": true,
+                "styleci": true
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
