@@ -7,7 +7,10 @@
     "type": "flarum-extension",
     "license": "MIT",
     "require": {
-        "flarum/core": "^1.8.0"
+        "php": "^8.0",
+        "flarum/core": "^v1.8.0",
+        "flarum/tags": "^v1.8.0",
+        "flarum/flags": "^1.8"
     },
     "authors": [
         {
@@ -54,5 +57,8 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require-dev": {
+        "flarum/lock": "^1.8"
+    }
 }

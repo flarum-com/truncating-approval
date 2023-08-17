@@ -1,0 +1,26 @@
+.TruncatingApproval {
+  &-RejectContentModal {
+    .Modal-footer {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    textarea {
+      margin-top: 8px;
+    }
+  }
+
+  &-PostPreview {
+    padding: 16px;
+    border-radius: var(--border-radius);
+    background: var(--body-bg);
+    color: var(--text-color);
+
+    &Label {
+      font-weight: bold;
+      color: var(--text-color);
+    }
+  }
+}

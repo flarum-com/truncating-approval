@@ -1,0 +1,63 @@
+.TruncatingApproval {
+  &-restrictedBbcodes {
+    padding: 16px;
+    border: 1px solid var(--control-bg);
+    border-radius: var(--border-radius);
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+    &Label {
+      font-weight: bold;
+    }
+
+    &List {
+      margin-top: 16px;
+      margin-bottom: 16px;
+
+      &Empty {
+        text-align: center;
+        color: var(--muted-color);
+        font-size: 1.25em;
+      }
+
+      &Grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 8px;
+      }
+
+      &Item {
+        display: flex;
+
+        input {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        button {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+
+    &Buttons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    &Error {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding: 6px 8px;
+      padding-left: 12px;
+      background: fade(@alert-error-bg, 7.5%);
+      border-left: 4px solid var(--alert-error-bg);
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

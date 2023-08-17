@@ -1,7 +1,57 @@
-com-truncating-approval:
-  # For more details on the format
-  # Checkout https://docs.flarum.org/extend/i18n/#appendix-a-standard-key-format
+flarum-com-truncating-approval:
   admin:
-    my_cool_key: My Cool Key
+    permissions:
+      approve_posts: Approve posts with restricted formatting tags
+      bypass_restricted_formatting: Exempt from formatting tag restrictions
+
+    settings:
+      lock_after_rejection:
+        label: Automatically lock discussions after rejecting
+        help: This feature requires Flarum's Lock extension to be installed and enabled
+
+      eventpost_after_rejection:
+        label: Publicly display rejections and rejection reasons
+        help: Auto-reply to a discussion with the moderator-provided reason for rejecting content
+
+      restricted_bbcodes:
+        add_new_button: Add new tag
+        empty_text: You haven't added any tags to restrict yet.
+        errors:
+          one_or_more_blanks: One or more restricted tags is blank. You must remove this entry before saving.
+        help_1: |
+          Add a formatting tag to this section to require posts including to be approved before being publicly visible.
+        help_2: |
+          Please note that some formatting can be achieved using various different tags. For example, to block media, you may need to add
+          FoF Upload's tags to this list, as well as BBCode image tags.
+        item_label: Tag
+        label: Restricted tags
+        remove_button: Remove tag
+        save_button: Save tags list
+
+    tags:
+      edit_modal:
+        uses_truncating_approval: Use Truncating Approval for formatting approval in this tag
 
   forum:
+    rejected_event_post:
+      description: "{username} removed content from a post {time}: reason"
+
+    post:
+      dismiss_flag_button: Approve content
+      forbidden_formatting_detected: This post contains one or more elements that require approval.
+      truncate_button: Truncate content
+
+      awaiting_approval: Awaiting approval
+      awaiting_approval_tooltip: Some of this post might be hidden until approved
+
+    reject_content_modal:
+      body: We'll automatically remove the offending content from the post, and notify the user that their post was edited.
+      cancel_button: Cancel
+      confirm_truncation_button: Confirm post truncation
+      preview: Post preview after truncation
+      reason_label: Truncation reason
+      reason_help: You must provide a reason why this post's content is not suitable. This will be displayed publicly.
+      title: Truncate post contents
+
+      errors:
+        reason_required_alert: You must provide a reason for the post's truncation.
