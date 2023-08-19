@@ -1,7 +1,7 @@
 flarum-com-truncating-approval:
   admin:
     permissions:
-      approve_posts: Approve posts with restricted formatting tags
+      approve_posts: Approve posts with restricted formatting tags (also requires Flags permissions)
       bypass_restricted_formatting: Exempt from formatting tag restrictions
 
     settings:
