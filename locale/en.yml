@@ -35,7 +35,7 @@ flarum-com-truncating-approval:
 
   forum:
     rejected_event_post:
-      description: "{username} removed content from a post {time}: reason"
+      description: "{username} removed content from a post {time}: {reason}"
 
     post:
       dismiss_flag_button: Approve content

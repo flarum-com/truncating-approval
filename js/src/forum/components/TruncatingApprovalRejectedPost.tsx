@@ -9,7 +9,7 @@ export class TruncatingApprovalRejectedPost extends EventPost {
   }
 
   icon() {
-    return 'fas fa-tag';
+    return 'fas fa-dumpster-fire';
   }
 
   descriptionKey() {

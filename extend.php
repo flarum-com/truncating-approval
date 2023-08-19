@@ -20,6 +20,7 @@ use Flarum\Tags\Api\Serializer\TagSerializer;
 use Flarum\Tags\Tag;
 use Flarum\Tags\Event\Creating as TagCreating;
 use Flarum\Tags\Event\Saving as TagSaving;
+use FlarumCom\TruncatingApproval\Event\PostWasRejected;
 use FlarumCom\TruncatingApproval\Post\TruncatingApprovalRejectedPost;
 
 return [

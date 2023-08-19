@@ -18,10 +18,21 @@ use FlarumCom\TruncatingApproval\Event\PostWasApproved;
 use FlarumCom\TruncatingApproval\Event\PostWasRejected;
 use FlarumCom\TruncatingApproval\XmlUtils;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Events\Dispatcher as EventsDispatcher;
 use Illuminate\Support\Arr;
 
 class ApproveRejectContent
 {
+    /**
+     * @var EventsDispatcher
+     */
+    protected $events;
+
+    public function __construct(EventsDispatcher $events)
+    {
+        $this->events = $events;
+    }
+
     /**
      * @param Dispatcher $events
      */
@@ -48,7 +59,9 @@ class ApproveRejectContent
             $post->awaiting_truncating_approval = false;
 
             if ($isApproved) {
-                $post->raise(new PostWasApproved($post, $event->actor));
+                $post->afterSave(function ($post) use ($event) {
+                    $this->events->dispatch(new PostWasApproved($post, $event->actor));
+                });
             } else {
                 $reason = Arr::get($attributes, 'truncatingRejectReason', null);
 
@@ -63,9 +76,10 @@ class ApproveRejectContent
                 $truncatedXml = XmlUtils::stripXmlTagsFromXmlString($forbiddenCodes, $post->getParsedContentAttribute());
 
                 $post->setParsedContentAttribute($truncatedXml);
-                $post->save();
 
-                $post->raise(new PostWasRejected($post, $event->actor, trim($reason)));
+                $post->afterSave(function ($post) use ($event, $reason) {
+                    $this->events->dispatch(new PostWasRejected($post, $event->actor, trim($reason)));
+                });
             }
         }
     }
