@@ -23,39 +23,43 @@ export function customFlags() {
   extend(PostComponent.prototype, 'flagActionItems', function (this: PostComponent, items: ItemList<Mithril.Children>) {
     items.setContent(
       'dismiss',
-      <Button className="Button" icon="fas fa-check" onclick={PostControls.truncatingApproveAction.bind(this.attrs.post, true)}>
+      <Button className="Button" icon="fas fa-check" onclick={PostControls.truncatingApproveAction.bind(this, true)}>
         {app.translator.trans('flarum-com-truncating-approval.forum.post.dismiss_flag_button')}
       </Button>
     );
 
     items.add(
       'truncatingApprove-truncate',
-      <Button className="Button Button--danger" icon="fas fa-dumpster-fire" onclick={() => PostControls.truncatingRejectAction(this.attrs.post)}>
+      <Button className="Button Button--danger" icon="fas fa-dumpster-fire" onclick={() => PostControls.truncatingRejectAction(this)}>
         {app.translator.trans('flarum-com-truncating-approval.forum.post.truncate_button')}
       </Button>
     );
   });
 
-  PostControls.truncatingRejectAction = async function (post: Post) {
+  PostControls.truncatingRejectAction = async function (postComponent: PostComponent) {
     return app.modal.show(RejectContentModal, {
-      post,
-      onsubmit: async (reason: string) => await PostControls.truncatingApproveAction.call(post, false, reason),
+      post: postComponent.attrs.post,
+      onsubmit: async (reason: string) => await PostControls.truncatingApproveAction.call(postComponent, false, reason),
     });
   };
 
-  PostControls.truncatingApproveAction = async function (this: Post, truncatingApprove: boolean, reason?: string) {
+  PostControls.truncatingApproveAction = async function (this: PostComponent, truncatingApprove: boolean, reason?: string) {
     const body: Record<string, unknown> = { truncatingApprove };
 
     if (reason) {
       body.truncatingRejectReason = reason;
     }
 
-    const save = this.save(body);
-    this.pushAttributes({ awaitingTruncatingApproval: false });
+    const post = this.attrs.post;
 
-    if (this.number() === 1) {
-      this.discussion().pushAttributes({ awaitingTruncatingApproval: false });
+    const save = post.save(body);
+    post.pushAttributes({ awaitingTruncatingApproval: false });
+
+    if (post.number() === 1) {
+      post.discussion().pushAttributes({ awaitingTruncatingApproval: false });
     }
+
+    this.dismissFlag();
 
     await save;
   };
