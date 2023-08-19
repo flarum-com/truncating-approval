@@ -115,6 +115,9 @@ class UnapprovePostsWithForbiddenBbcodes
     {
         $flattened = XmlUtils::getXmlTagsFromArrayRecursive($data);
 
+        $flattened = array_map(fn ($x) => strtoupper($x), $flattened);
+        $restrictedCodes = array_map(fn ($x) => strtoupper($x), $restrictedCodes);
+
         $matches = array_intersect(array_keys($flattened), $restrictedCodes);
 
         if (count($matches) > 0) {
