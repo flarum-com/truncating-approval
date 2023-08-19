@@ -12,5 +12,5 @@
 use Flarum\Database\Migration;
 
 return Migration::addColumns('tags', [
-    'uses_truncating_approval' => ['boolean', 'default' => false, 'nullable' => false],
+    'uses_truncating_approval' => ['boolean', 'default' => true, 'nullable' => false],
 ]);
