@@ -42,6 +42,7 @@ flarum-com-truncating-approval:
       description: "{username} removed content from a post {time}: {reason}"
 
     post:
+      cannot_dismiss: You can't dismiss this flag.
       dismiss_flag_button: Approve content
       forbidden_formatting_detected: This post contains one or more elements that require approval.
       truncate_button: Truncate content

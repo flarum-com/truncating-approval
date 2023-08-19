@@ -21,6 +21,18 @@ export function customFlags() {
   });
 
   extend(PostComponent.prototype, 'flagActionItems', function (this: PostComponent, items: ItemList<Mithril.Children>) {
+    if (this.attrs.post.flags()?.filter?.((f) => f.type() === 'truncatingApproval').length === 0) {
+      // No truncating approval flags on this post
+      return;
+    }
+
+    if (!this.attrs.post.canApproveTruncatingApproval()) {
+      items.add('truncatingApproval-noPermissions', <p>{app.translator.trans('flarum-com-truncating-approval.forum.post.cannot_dismiss')}</p>);
+      items.remove('dismiss');
+      items.remove('controls');
+      return;
+    }
+
     items.setContent(
       'dismiss',
       <Button className="Button" icon="fas fa-check" onclick={PostControls.truncatingApproveAction.bind(this, true)}>
