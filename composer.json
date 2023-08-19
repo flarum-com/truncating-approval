@@ -10,7 +10,7 @@
         "php": "^8.0",
         "flarum/core": "^v1.8.0",
         "flarum/tags": "^v1.8.0",
-        "flarum/flags": "^1.8"
+        "flarum/flags": "^v1.8.0"
     },
     "authors": [
         {
