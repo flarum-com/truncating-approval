@@ -59,6 +59,11 @@ class UnapprovePostsWithForbiddenBbcodes
             return;
         }
 
+        if (!$post->discussion->tags()->where('uses_truncating_approval', '=', true)->exists()) {
+            // This discussion doesn't use truncating approval, so we don't need to do anything.
+            return;
+        }
+
         $post->afterSave(function ($post) {
             if (!$this->postHasForbiddenBbcodes($post)) {
                 if ($post->awaiting_truncating_approval === true) {
