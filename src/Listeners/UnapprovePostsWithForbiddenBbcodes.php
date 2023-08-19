@@ -51,7 +51,7 @@ class UnapprovePostsWithForbiddenBbcodes
             return;
         }
 
-        if ($event->actor->can('bypassRestrictedBbcodes', $post->discussion)) {
+        if ($event->actor->can('discussion.bypassRestrictedBbcodes', $post->discussion)) {
             if ($post->awaiting_truncating_approval === null) {
                 $post->awaiting_truncating_approval = false;
             }
