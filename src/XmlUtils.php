@@ -12,13 +12,7 @@
 namespace FlarumCom\TruncatingApproval;
 
 use DOMDocument;
-use Flarum\Post\CommentPost;
-use Flarum\Settings\SettingsRepositoryInterface;
-use Flarum\User\User;
 use InvalidArgumentException;
-use Psr\Http\Message\ServerRequestInterface;
-use s9e\TextFormatter\Parser;
-use s9e\TextFormatter\Renderer;
 
 class XmlUtils
 {
