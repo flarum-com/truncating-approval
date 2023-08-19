@@ -43,6 +43,7 @@ export class RejectContentModal extends Modal<RejectContentModalAttrs, RejectCon
             <p class="TruncatingApproval-PostPreviewLabel">
               {app.translator.trans('flarum-com-truncating-approval.forum.reject_content_modal.preview')}
             </p>
+            <p class="helpText">{app.translator.trans('flarum-com-truncating-approval.forum.reject_content_modal.preview_description')}</p>
             <div class="TruncatingApproval-PostPreview">
               <div className="Post-body">{!this.state.loadingPreview() ? m.trust(this.state.preview()) : <LoadingIndicator />}</div>
             </div>

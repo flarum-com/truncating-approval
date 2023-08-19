@@ -50,6 +50,7 @@ flarum-com-truncating-approval:
       cancel_button: Cancel
       confirm_truncation_button: Confirm post truncation
       preview: Post preview after truncation
+      preview_description: If this preview contains any other content that should not be present, you'll need to manually edit this post afterwards to remove it.
       reason_label: Truncation reason
       reason_help: You must provide a reason why this post's content is not suitable. This will be displayed publicly.
       title: Truncate post contents
