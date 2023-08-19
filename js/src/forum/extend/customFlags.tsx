@@ -59,8 +59,8 @@ export function customFlags() {
       post.discussion().pushAttributes({ awaitingTruncatingApproval: false });
     }
 
-    this.dismissFlag();
-
     await save;
+
+    this.dismissFlag();
   };
 }
