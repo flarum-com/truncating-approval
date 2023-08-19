@@ -15,6 +15,7 @@ flarum-com-truncating-approval:
 
       restricted_bbcodes:
         add_new_button: Add new tag
+        description: Enter any restricted BBCodes below. Don't include the square brackets ([]).
         empty_text: You haven't added any tags to restrict yet.
         errors:
           one_or_more_blanks: One or more restricted tags is blank. You must remove this entry before saving.

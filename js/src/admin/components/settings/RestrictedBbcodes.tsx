@@ -52,6 +52,9 @@ export default class RestrictedBbcodes extends Component<Attrs> {
         <p class="TruncatingApproval-restrictedBbcodesLabel" aria-hidden="true">
           {app.translator.trans('flarum-com-truncating-approval.admin.settings.restricted_bbcodes.label')}
         </p>
+        <p class="TruncatingApproval-restrictedBbcodesDescriptio  n helpText" aria-hidden="true">
+          {app.translator.trans('flarum-com-truncating-approval.admin.settings.restricted_bbcodes.description')}
+        </p>
 
         <div class="TruncatingApproval-restrictedBbcodesList">
           {this.restrictedBbcodes.length === 0 && (
