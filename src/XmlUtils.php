@@ -105,6 +105,9 @@ class XmlUtils
         $dom = new DOMDocument();
         $dom->loadXML($xml);
 
+        // Convert to uppercase
+        $tags = array_map(fn ($x) => strtoupper($x), $tags);
+
         foreach ($tags as $tag) {
             $iterator = $dom->getElementsByTagName($tag)->getIterator();
 
