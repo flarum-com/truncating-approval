@@ -20,5 +20,14 @@ export function addExtensionSettings() {
     })
     .registerSetting(() => {
       return <RestrictedBbcodes />;
+    })
+    .registerSetting(() => {
+      if (!('flarum-tags' in flarum.extensions)) return null;
+
+      return (
+        <p>
+          <strong>{app.translator.trans('flarum-com-truncating-approval.admin.settings.tag_note')}</strong>
+        </p>
+      );
     });
 }

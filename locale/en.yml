@@ -29,6 +29,10 @@ flarum-com-truncating-approval:
         remove_button: Remove tag
         save_button: Save tags list
 
+      tag_note: |
+        You must enable this extension on each tag on your forum manually. If you do not, some or all tags will not be auto-moderated.
+        You can do this at the bottom of the edit tag modal on the Tags extension settings page.
+
     tags:
       edit_modal:
         uses_truncating_approval: Use Truncating Approval for formatting approval in this tag
