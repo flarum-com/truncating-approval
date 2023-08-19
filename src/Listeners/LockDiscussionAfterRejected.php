@@ -11,6 +11,7 @@
 
 namespace FlarumCom\TruncatingApproval\Listeners;
 
+use Flarum\Extension\ExtensionManager;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Contracts\Events\Dispatcher;
 use Flarum\Lock\Event\DiscussionWasLocked;
@@ -28,10 +29,16 @@ class LockDiscussionAfterRejected
      */
     protected $events;
 
-    public function __construct(SettingsRepositoryInterface $settings, Dispatcher $events)
+    /**
+     * @var ExtensionManager $extensionManager
+     */
+    protected $extensionManager;
+
+    public function __construct(SettingsRepositoryInterface $settings, Dispatcher $events, ExtensionManager $extensionManager)
     {
         $this->settings = $settings;
         $this->events = $events;
+        $this->extensionManager = $extensionManager;
     }
 
     /**
@@ -39,8 +46,8 @@ class LockDiscussionAfterRejected
      */
     public function handle(PostWasRejected $event)
     {
-        if (!class_exists(DiscussionWasLocked::class)) {
-            // Lock is not installed
+        if (!class_exists(DiscussionWasLocked::class) || !$this->extensionManager->isEnabled('flarum-lock')) {
+            // Lock is not installed/enabled
             return;
         }
 
